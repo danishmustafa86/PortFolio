@@ -22,7 +22,7 @@ export default function About() {
           <div className="mb-5">
             <h2 className="text-2xl mb-2">Who am I?</h2>
             <p className="text-lg text-gray-300 leading-relaxed">
-              Hello! I'm Danish, a software engineer from Faisalabad, PK.
+              Hello! I&apos;m Danish, a software engineer from Faisalabad, PK.
               I have expertise in AI, ML, Generative AI, and web application development using React.
               I have worked on multiple projects in international hackathons, leveraging my combined
               experience in AI and web development. As a DSA Trainer at iCodeGuru (Welfare Organization),

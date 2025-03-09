@@ -5,28 +5,25 @@ import React, { useEffect, useState } from "react";
 import bgImage from "./images/bg1.jpg";
 import profilePic from "./images/myimage.jpg";
 
+// Generate random values for particles
+const generateParticles = (count) => {
+  return Array.from({ length: count }, () => ({
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    animationDelay: `${Math.random() * 5}s`,
+  }));
+};
+
+const particles = generateParticles(20);
+
 const ImageComponent = () => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
-  const [particles, setParticles] = useState([]);
 
   const roles = ["Full-Stack Developer", "AI Enthusiast", "Innovator"];
   const currentRole = roles[loopNum % roles.length];
-
-  // Generate particles only on the client side
-  useEffect(() => {
-    const generateParticles = (count) => {
-      return Array.from({ length: count }, () => ({
-        top: `${Math.random() * 100}%`,
-        left: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 5}s`,
-      }));
-    };
-
-    setParticles(generateParticles(20));
-  }, []);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -82,13 +79,13 @@ const ImageComponent = () => {
           {/* Call-to-Action Buttons */}
           <div className="flex justify-center md:justify-start space-x-4 animate-slideUp">
             <a
-              href="#projects"
+              href="#projects" // Anchor link to Projects section
               className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               View My Work
             </a>
             <a
-              href="#contact"
+              href="#contact" // Anchor link to Contact section
               className="border-2 border-white hover:bg-white hover:text-black text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-xl"
             >
               Get in Touch
@@ -98,7 +95,7 @@ const ImageComponent = () => {
           {/* Mission Statement */}
           <div className="mt-8 animate-slideUp">
             <p className="text-lg md:text-xl text-gray-300 italic">
-              "Empowering businesses with innovative technology and seamless user experiences."
+              &quot;Empowering businesses with innovative technology and seamless user experiences.&quot;
             </p>
           </div>
 
