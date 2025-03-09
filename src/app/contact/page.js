@@ -132,61 +132,12 @@ export default function Contact() {
       <div style={styles.about}>
         <h1 style={styles.title}>Contact Me</h1>
         <p style={styles.description}>
-          Hello, I'm Danish! If you have any questions, need assistance, or want to collaborate, feel free to reach out. I'm always happy to connect and help in any way I can!
+          Hello, I&apos;m Danish! If you have any questions, need assistance, or want to collaborate, feel free to reach out. I&apos;m always happy to connect and help in any way I can!
         </p>
       </div>
       <div style={styles.sectionContainer}>
         <Section />
       </div>
-      {/* <form style={styles.form} onSubmit={handleSubmit}>
-        <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="name">Name</label>
-          <input
-            style={styles.input}
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Enter your name"
-            required
-          />
-        </div>
-        <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="email">Email</label>
-          <input
-            style={styles.input}
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Enter your email"
-            required
-          />
-        </div>
-        <div style={styles.formGroup}>
-          <label style={styles.label} htmlFor="message">Message</label>
-          <textarea
-            style={styles.textarea}
-            id="message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Enter your message"
-            required
-          />
-        </div>
-        <button
-          style={styles.button}
-          type="submit"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? 'Sending...' : 'Send Message'}
-        </button>
-        {error && <p style={{ color: '#ff4d4d', marginTop: '10px' }}>{error}</p>}
-        {success && <p style={{ color: '#4CAF50', marginTop: '10px' }}>{success}</p>}
-      </form> */}
       <Footer />
     </div>
   );
