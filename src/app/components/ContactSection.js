@@ -1,55 +1,12 @@
 "use client";
-
-import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-// Function to dynamically import images with fallback
-const loadImage = async (path) => {
-  try {
-    const image = await import(`@/app/components/images/${path}`);
-    return image.default;
-  } catch (error) {
-    console.error(`Failed to load image: ${path}`, error);
-    return null; // Return null if the image fails to load
-  }
-};
+import { FaLinkedin, FaGithub, FaFacebook, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [images, setImages] = useState({
-    myImage: null,
-    linkedin: null,
-    github: null,
-    facebook: null,
-    location: null,
-    emailicon: null,
-  });
-
-  // Load images dynamically on component mount
-  useEffect(() => {
-    const loadImages = async () => {
-      const myImage = await loadImage('myimage.jpg');
-      const linkedin = await loadImage('linkedin.png');
-      const github = await loadImage('github.png');
-      const facebook = await loadImage('facebook.png');
-      const location = await loadImage('location.jpg');
-      const emailicon = await loadImage('emailicon.jpg');
-
-      setImages({
-        myImage,
-        linkedin,
-        github,
-        facebook,
-        location,
-        emailicon,
-      });
-    };
-
-    loadImages();
-  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -75,22 +32,22 @@ export default function Contact() {
       }
     } catch (error) {
       console.error('Error sending message:', error);
-      toast.error('Error occurred while sending the message.', { position: 'top-center' });
+      toast.error('An error occurred while sending the message.', { position: 'top-center' });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="max-w-4xl mx-auto my-20 p-8 bg-white rounded-lg shadow-lg">
+    <div className="max-w-6xl mx-auto my-20 p-8 bg-white rounded-lg shadow-lg">
       <ToastContainer />
       <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">Contact Me</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Contact Form */}
         <div>
           <h2 className="text-2xl font-bold mb-6 text-gray-800">Send a Message</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
               <label htmlFor="name" className="block text-gray-700 font-bold mb-2">Name</label>
               <input
                 type="text"
@@ -99,10 +56,11 @@ export default function Contact() {
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
                 value={formData.name}
                 onChange={handleChange}
+                placeholder="Enter your name"
                 required
               />
             </div>
-            <div className="mb-4">
+            <div>
               <label htmlFor="email" className="block text-gray-700 font-bold mb-2">Email</label>
               <input
                 type="email"
@@ -111,17 +69,20 @@ export default function Contact() {
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
                 value={formData.email}
                 onChange={handleChange}
+                placeholder="Enter your email"
                 required
               />
             </div>
-            <div className="mb-4">
+            <div>
               <label htmlFor="message" className="block text-gray-700 font-bold mb-2">Message</label>
               <textarea
                 id="message"
                 name="message"
-                className="w-full p-3 border border-gray-300 rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-red-600"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600"
                 value={formData.message}
                 onChange={handleChange}
+                placeholder="Enter your message"
+                rows="5"
                 required
               ></textarea>
             </div>
@@ -136,53 +97,25 @@ export default function Contact() {
         </div>
 
         {/* Contact Information */}
-        <div className="bg-gray-50 p-6 rounded-lg">
+        <div className="bg-gray-50 p-8 rounded-lg">
           <h2 className="text-2xl font-bold mb-6 text-gray-800">Contact Information</h2>
-          {/* Display Your Image */}
-          <div className="mb-6">
-            {images.myImage ? (
-              <Image
-                src={images.myImage}
-                alt="My Image"
-                width={400}
-                height={300}
-                className="rounded-lg shadow-md"
-              />
-            ) : (
-              <div className="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500">
-                My Image
-              </div>
-            )}
-          </div>
-          <div className="space-y-4">
+          <div className="space-y-6">
             <div className="flex items-center">
-              {images.emailicon ? (
-                <Image src={images.emailicon} alt="Email" width={24} height={24} className="mr-2" />
-              ) : (
-                <span className="mr-2">📧</span>
-              )}
+              <FaEnvelope className="text-red-600 mr-4" size={24} />
               <p className="text-gray-700">danishmustafa86@gmail.com</p>
             </div>
             <div className="flex items-center">
-              {images.location ? (
-                <Image src={images.location} alt="Location" width={24} height={24} className="mr-2" />
-              ) : (
-                <span className="mr-2">📍</span>
-              )}
+              <FaMapMarkerAlt className="text-red-600 mr-4" size={24} />
               <p className="text-gray-700">Faisalabad, Pakistan</p>
             </div>
-            <div className="flex items-center space-x-4 mt-6">
+            <div className="flex items-center space-x-6">
               <a
                 href="https://www.linkedin.com/in/danishmustafa86/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-700 hover:text-blue-600 transition-colors duration-300"
               >
-                {images.linkedin ? (
-                  <Image src={images.linkedin} alt="LinkedIn" width={24} height={24} />
-                ) : (
-                  <span>🔗</span>
-                )}
+                <FaLinkedin size={28} />
               </a>
               <a
                 href="https://github.com/danishmustafa86"
@@ -190,11 +123,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="text-gray-700 hover:text-gray-900 transition-colors duration-300"
               >
-                {images.github ? (
-                  <Image src={images.github} alt="GitHub" width={24} height={24} />
-                ) : (
-                  <span>🐙</span>
-                )}
+                <FaGithub size={28} />
               </a>
               <a
                 href="https://www.facebook.com/danish.jajja.56"
@@ -202,11 +131,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="text-gray-700 hover:text-blue-400 transition-colors duration-300"
               >
-                {images.facebook ? (
-                  <Image src={images.facebook} alt="Twitter" width={24} height={24} />
-                ) : (
-                  <span>🐦</span>
-                )}
+                <FaFacebook size={28} />
               </a>
             </div>
           </div>
