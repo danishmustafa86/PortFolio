@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import bgImage from "./images/bg1.jpg";
 import profilePic from "./images/myimage.jpg";
 
 // Generate random values for particles
@@ -49,21 +48,23 @@ const ImageComponent = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* Background Image */}
-      <Image
-        src={bgImage}
-        alt="Professional portfolio background"
-        fill
-        style={{ objectFit: "cover" }}
-        className="opacity-90"
-        priority
-      />
+      {/* Background Image - Added this section */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/danish.jpg" // Using image from public folder
+          alt="Background"
+          fill
+          priority
+          className="object-cover"
+          quality={100}
+        />
+      </div>
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <div className="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col md:flex-row justify-center items-center text-white px-6 md:px-16">
+      <div className="absolute inset-0 flex flex-col md:flex-row justify-center items-center text-white px-6 md:px-16 z-20">
         {/* Left Section (Text) */}
         <div className="flex-1 text-center md:text-left space-y-6">
           <h1 className="text-5xl md:text-6xl font-extrabold leading-tight animate-fadeIn">
@@ -75,22 +76,6 @@ const ImageComponent = () => {
             <br />
             Crafting <span className="text-blue-400 font-semibold">cutting-edge</span> digital solutions with a passion for problem-solving and AI-driven development.
           </p>
-
-          {/* Call-to-Action Buttons */}
-          <div className="flex justify-center md:justify-start space-x-4 animate-slideUp">
-            <a
-              href="#projects" // Anchor link to Projects section
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
-            >
-              View My Work
-            </a>
-            <a
-              href="#contact" // Anchor link to Contact section
-              className="border-2 border-white hover:bg-white hover:text-black text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-xl"
-            >
-              Get in Touch
-            </a>
-          </div>
 
           {/* Mission Statement */}
           <div className="mt-8 animate-slideUp">
@@ -104,6 +89,22 @@ const ImageComponent = () => {
             <p className="text-lg md:text-xl text-gray-300">
               Trusted by <span className="text-blue-400 font-semibold">100+ clients</span> worldwide.
             </p>
+          </div>
+
+          {/* Call-to-Action Buttons */}
+          <div className="flex justify-center md:justify-start space-x-4 animate-slideUp">
+            <a
+              href="#projects"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              View My Work
+            </a>
+            <a
+              href="#contact"
+              className="border-2 border-white hover:bg-white hover:text-black text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-xl"
+            >
+              Get in Touch
+            </a>
           </div>
         </div>
 
@@ -124,7 +125,7 @@ const ImageComponent = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-8 w-8 text-white"
@@ -142,7 +143,7 @@ const ImageComponent = () => {
       </div>
 
       {/* Floating Particles Animation */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden z-10">
         {particles.map((particle, i) => (
           <div
             key={i}
