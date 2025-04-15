@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import profilePic from "./images/myimage.jpg";
+// import profilePic from "./images/myimage.jpg";
 
 // Generate random values for particles
 const generateParticles = (count) => {
@@ -112,7 +112,8 @@ const ImageComponent = () => {
         <div className="flex-1 flex justify-center mt-8 md:mt-0 animate-fadeIn">
           <div className="relative group">
             <Image
-              src={profilePic}
+              // src={profilePic}
+              src="/myhalf.jpg" // Using image from public folder
               alt="Danish Mustafa"
               width={350}
               height={350}
