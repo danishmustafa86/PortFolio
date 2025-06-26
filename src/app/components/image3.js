@@ -49,7 +49,7 @@ const ImageComponent = () => {
   }, [text, isDeleting, loopNum, currentRole, typingSpeed]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen overflow-hidden">
       {/* Background Image - Added this section */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -66,13 +66,13 @@ const ImageComponent = () => {
       <div className="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col md:flex-row justify-center items-center text-white px-6 md:px-16 z-20">
+      <div className="absolute inset-0 flex flex-col md:flex-row justify-center items-center text-white px-4 sm:px-6 md:px-16 z-20">
         {/* Left Section (Text) */}
-        <div className="flex-1 text-center md:text-left space-y-6">
-          <h1 className="text-5xl md:text-6xl font-extrabold leading-tight animate-fadeIn">
+        <div className="flex-1 text-center md:text-left space-y-6 max-w-xl mx-auto md:mx-0">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight animate-fadeIn">
             Danish Mustafa
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl animate-slideUp">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl animate-slideUp">
             <span className="text-blue-400 font-semibold">{text}</span>
             <span className="ml-1">|</span>
             <br />
@@ -80,30 +80,30 @@ const ImageComponent = () => {
           </p>
 
           {/* Mission Statement */}
-          <div className="mt-8 animate-slideUp">
-            <p className="text-lg md:text-xl text-gray-300 italic">
+          <div className="mt-6 sm:mt-8 animate-slideUp">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 italic">
               &quot;Empowering businesses with innovative technology and seamless user experiences.&quot;
             </p>
           </div>
 
           {/* Social Proof or Testimonial */}
-          <div className="mt-8 animate-slideUp">
-            <p className="text-lg md:text-xl text-gray-300">
+          <div className="mt-6 sm:mt-8 animate-slideUp">
+            <p className="text-base sm:text-lg md:text-xl text-gray-300">
               Trusted by <span className="text-blue-400 font-semibold">100+ clients</span> worldwide.
             </p>
           </div>
 
           {/* Call-to-Action Buttons */}
-          <div className="flex justify-center md:justify-start space-x-4 animate-slideUp">
+          <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4 animate-slideUp">
             <a
               href="#projects"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
             >
               View My Work
             </a>
             <a
               href="#contact"
-              className="border-2 border-white hover:bg-white hover:text-black text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-xl"
+              className="border-2 border-white hover:bg-white hover:text-black text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-xl text-sm sm:text-base"
             >
               Get in Touch
             </a>
@@ -112,14 +112,13 @@ const ImageComponent = () => {
 
         {/* Right Section (Profile Image) */}
         <div className="flex-1 flex justify-center mt-8 md:mt-0 animate-fadeIn">
-          <div className="relative group">
+          <div className="relative group w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80">
             <Image
               // src={profilePic}
               src="/myhalf.jpg" // Using image from public folder
               alt="Danish Mustafa"
-              width={350}
-              height={350}
-              className="rounded-full border-4 border-white shadow-lg hover:scale-105 transition-transform duration-300 animate-float"
+              fill
+              className="rounded-full border-4 border-white shadow-lg hover:scale-105 transition-transform duration-300 animate-float object-cover"
               priority
             />
             <div className="absolute inset-0 rounded-full border-4 border-transparent group-hover:border-blue-500 transition-all duration-300"></div>
