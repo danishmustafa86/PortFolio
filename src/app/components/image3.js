@@ -53,7 +53,7 @@ const ImageComponent = () => {
       {/* Background Image - Added this section */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/danish.jpg" // Using image from public folder
+          src="/danish.png" // Using image from public folder
           alt="Background"
           fill
           priority
