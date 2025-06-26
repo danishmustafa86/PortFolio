@@ -11,8 +11,12 @@ import Leetcode from "@/app/components/images/Leetcode.png";
 import Newsnexus from "@/app/components/images/NewNexus.png";
 import Geminichatbot from "@/app/components/images/discord.png";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Projects() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalProject, setModalProject] = useState(null);
+
   const projects = [
     {
       title: "Article Sift",
@@ -84,6 +88,11 @@ export default function Projects() {
     },
   ];
 
+  // Placeholder for AI-generated info (could be replaced with real AI call)
+  const getAIGeneratedInfo = (project) => {
+    return `AI Insight: The project "${project.title}" leverages modern technologies to solve real-world problems. Its stack includes ${project.technologies.join(", ")}. This project stands out for its innovative approach and user-centric design.`;
+  };
+
   return (
     <section id="projects" className="p-5 font-sans bg-black text-white min-h-screen">
       <h1 className="text-4xl md:text-5xl font-extrabold mb-10 text-center text-teal-400 animate-fadeIn">
@@ -105,12 +114,15 @@ export default function Projects() {
                 priority
               />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <a
-                  href={project.link}
+                <button
+                  onClick={() => {
+                    setModalProject(project);
+                    setModalOpen(true);
+                  }}
                   className="bg-teal-500 bg-opacity-90 text-white px-6 py-2 rounded-lg font-semibold hover:bg-teal-600 transition-colors duration-300"
                 >
                   View Project
-                </a>
+                </button>
               </div>
             </div>
             <div className="p-6">
@@ -135,6 +147,47 @@ export default function Projects() {
           </div>
         ))}
       </div>
+
+      {/* Modal for AI-generated project info */}
+      {modalOpen && modalProject && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+          <div className="bg-white text-black rounded-lg shadow-2xl p-8 max-w-lg w-full relative animate-fadeIn">
+            <button
+              className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-2xl font-bold"
+              onClick={() => setModalOpen(false)}
+              aria-label="Close"
+            >
+              &times;
+            </button>
+            <h2 className="text-2xl font-bold mb-4 text-teal-600">{modalProject.title}</h2>
+            <Image
+              src={modalProject.image}
+              alt={modalProject.title}
+              width={400}
+              height={200}
+              className="rounded mb-4"
+            />
+            <p className="mb-4">{modalProject.description}</p>
+            <div className="mb-4">
+              <h3 className="font-semibold mb-2">Technologies:</h3>
+              <div className="flex flex-wrap gap-2">
+                {modalProject.technologies.map((tech, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-teal-600 text-white px-3 py-1 rounded-full text-sm"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="bg-gray-100 p-4 rounded-lg mt-4">
+              <h4 className="font-semibold mb-2 text-teal-700">AI Generated Insight</h4>
+              <p>{getAIGeneratedInfo(modalProject)}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
