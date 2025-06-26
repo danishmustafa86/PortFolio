@@ -104,10 +104,10 @@ export default function Projects() {
                 height={200}
                 priority
               />
-              <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <a
                   href={project.link}
-                  className="bg-teal-500 text-white px-6 py-2 rounded-lg font-semibold hover:bg-teal-600 transition-colors duration-300"
+                  className="bg-teal-500 bg-opacity-90 text-white px-6 py-2 rounded-lg font-semibold hover:bg-teal-600 transition-colors duration-300"
                 >
                   View Project
                 </a>
