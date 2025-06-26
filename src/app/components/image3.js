@@ -11,7 +11,7 @@ const ImageComponent = () => {
   const [typingSpeed, setTypingSpeed] = useState(150);
   const [particles, setParticles] = useState([]);
 
-  const roles = ["Full-Stack Developer", "AI Enthusiast", "Innovator"];
+  const roles = ["Full-Stack Developer", "Agentic AI Enthusiast", "Innovator"];
   const currentRole = roles[loopNum % roles.length];
 
   // Generate particles only on the client after mount
