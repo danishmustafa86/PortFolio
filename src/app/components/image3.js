@@ -96,13 +96,17 @@ const ImageComponent = () => {
           {/* Call-to-Action Buttons */}
           <div className="flex flex-col sm:flex-row justify-center md:justify-start space-y-3 sm:space-y-0 sm:space-x-4 animate-slideUp">
             <a
-              href="#projects"
+              href="https://github.com/danishmustafa86"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl text-sm sm:text-base"
             >
               View My Work
             </a>
             <a
-              href="#contact"
+              href="https://www.linkedin.com/in/danishmustafa86/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="border-2 border-white hover:bg-white hover:text-black text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-xl text-sm sm:text-base"
             >
               Get in Touch
