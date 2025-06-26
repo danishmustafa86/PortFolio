@@ -5,25 +5,27 @@ import React, { useEffect, useState } from "react";
 import bgImage from "./images/bg1.jpg";
 import profilePic from "./images/myimage.jpg";
 
-// Generate random values for particles
-const generateParticles = (count) => {
-  return Array.from({ length: count }, () => ({
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    animationDelay: `${Math.random() * 5}s`,
-  }));
-};
-
-const particles = generateParticles(20);
-
 const ImageComponent = () => {
   const [text, setText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
+  const [particles, setParticles] = useState([]);
 
   const roles = ["Full-Stack Developer", "AI Enthusiast", "Innovator"];
   const currentRole = roles[loopNum % roles.length];
+
+  // Generate particles only on the client after mount
+  useEffect(() => {
+    const generateParticles = (count) => {
+      return Array.from({ length: count }, () => ({
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 5}s`,
+      }));
+    };
+    setParticles(generateParticles(20));
+  }, []);
 
   useEffect(() => {
     const handleTyping = () => {
